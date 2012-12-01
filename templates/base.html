@@ -1,0 +1,15 @@
+<html>
+	<head>
+		{% if title %}
+		<title>{{title}}</title>
+		{% else %}
+		<title>Linda Saju</title>
+		{% endif %}
+		{% block style %}<link rel="stylesheet" type="text/css" href="default.css">{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+		{% endblock %}
+	</body>
+</html>
+
