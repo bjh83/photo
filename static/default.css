@@ -1,7 +1,7 @@
 body
 {
 	font-family:Arial,Helvetica,sans-serif;
-	background-color:#E8E8E8
+	background-color:#E8E8E8;
 }
 
 div.container
@@ -25,7 +25,7 @@ div.sidebar
 	height:80%;
 	float:left;
 	padding:2.5%;
-	background-color:#F0F0F0
+	background-color:#F0F0F0;
 }
 
 div.content
@@ -34,10 +34,42 @@ div.content
 	height:80%;
 	float:left;
 	padding:2.5%;
-	background-color:#F8F8F8
+	background-color:#F8F8F8;
 }
 
 div.footer
 {
+}
+
+a:link
+{
+	color:#000000;
+	text-decoration:none;
+}
+
+a.spacious
+{
+	font-size:20px;
+}
+
+div.spacious
+{
+	margin-bottom:10px;
+}
+
+a:visited
+{
+	color:#000000;
+	text-decoration:none;
+}
+
+a:hover
+{
+	text-decoration:underline;
+}
+
+a:active
+{
+	text-decoration:underline;
 }
 
