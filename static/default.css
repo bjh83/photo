@@ -1,0 +1,43 @@
+body
+{
+	font-family:Arial,Helvetica,sans-serif;
+	background-color:#E8E8E8
+}
+
+div.container
+{
+	width:80%;
+	height:750px;
+	padding:10px;
+	margin-left:10%;
+	/* background should be apllied to the template directly, probably */
+}
+
+div.header
+{
+	margin-bottom:0px;
+	text-align:center;
+}
+
+div.sidebar
+{
+	width:15%;
+	height:80%;
+	float:left;
+	padding:2.5%;
+	background-color:#F0F0F0
+}
+
+div.content
+{
+	width:75%;
+	height:80%;
+	float:left;
+	padding:2.5%;
+	background-color:#F8F8F8
+}
+
+div.footer
+{
+}
+
