@@ -1,8 +1,15 @@
-{% extends main.html %}
+{% extends "main.html" %}
 {% block content %}
-<h1>{{album.name}}</h1>
-{% for picture in picture_list %}
-<img src="{{picture.image.path}}" alt="image not found" width="300" height="300">
-{% endfor %}
+<div class="field">
+	<h1>{{album.name}}</h1>
+	{% for picture in picture_list %}
+	<img src="{{picture.image.url}}" alt="image not found" width="120" height="120">
+	{% endfor %}
+</div>
+<div class="linkbar">
+	{% for album in album_list %}
+	<a href="{{album_prefix}}{{album.id}}/">{{album.name}}</a>
+	{% endfor %}
+</div>
 {% endblock %}
 
