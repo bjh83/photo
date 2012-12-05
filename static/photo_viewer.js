@@ -24,9 +24,6 @@ function PhotoController(listOfPhotos, selected, leftButton, rightButton) {
 	this.selected = selected;
 	this.leftButton = leftButton;
 	this.rightButton = rightButton;
-	for(photo in this.listOfPhotos) {
-		$(photo).hide();
-	}
 	$(this.selected).show();
 	if(this.listOfPhotos.indexOf(this.selected) == 0) {
 		this.leftButton.disable();
@@ -34,8 +31,13 @@ function PhotoController(listOfPhotos, selected, leftButton, rightButton) {
 	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length - 1) {
 		this.rightButton.disable();
 	}
-	this.leftButton.action = this.next;
-	this.rightButton.action = this.previous;
+	var instance = this;
+	this.leftButton.action = function() {
+		instance.previous();
+	};
+	this.rightButton.action = function() {
+		instance.next();
+	};
 }
 
 PhotoController.prototype.next = function() {

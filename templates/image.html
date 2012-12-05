@@ -3,7 +3,7 @@
 <div class="field">
 	<h1>{{album.name}}</h1>
 	{% for picture in picture_list %}
-	<img src="{{picture.image.url}}" alt="image not found" width="120" height="120">
+	<a href="/view_photo/{{album.id}}/{{picture.id}}/"><img src="{{picture.image.url}}" alt="image not found" width="120" height="120"></a>
 	{% endfor %}
 </div>
 <div class="linkbar">

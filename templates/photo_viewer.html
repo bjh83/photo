@@ -20,7 +20,7 @@
 {% block body %}
 <div class="field">
 	{% for picture in picture_list %}
-	<img src="{{picture.url}}" id="{{picture.id}}"alt="image not found">
+	<img src="{{picture.url}}" id="{{picture.id}}" alt="image not found" style="display:none;">
 	{% endfor %}
 </div>
 <div class="linkbar">
