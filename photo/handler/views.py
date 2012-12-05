@@ -49,5 +49,5 @@ def view_photo(request, album_id, photo_id):
 	except Album.DoesNotExist:
 		raise Http404
 	return render_to_response('photo_viewer.html', {'title': album.name, 'picture_list': new_picture_list,
-		'selected': new_selected})
+		'selected': new_selected, 'body_style': 'picture_viewing'})
 

@@ -9,7 +9,7 @@
 		{% block style %}<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}default.css">{% endblock %}
 		{% block header_extra %}{% endblock %}
 	</head>
-	<body>
+	<body{% if body_style %} class="{{body_style}}"{% endif %}>
 		{% block body %}
 		{% endblock %}
 	</body>

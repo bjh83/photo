@@ -8,8 +8,6 @@
 		var leftButton = new Button("#left");
 		var rightButton = new Button("#right");
 		var selected = "#{{selected.id}}";
-		//leftButton.action = function() {leftButton.disable(); rightButton.enable();};
-		//rightButton.action = function() {rightButton.disable(); leftButton.enable();};
 		var listOfPhotos = [{% for picture in picture_list %}{% if forloop.last %}"#{{picture.id}}"{% else %} "#{{picture.id}}", {% endif %}{% endfor %}];
 		var photoController = new PhotoController(listOfPhotos, selected, leftButton, rightButton);
 		$("#left").click(leftButton.action);
@@ -18,7 +16,7 @@
 </script>
 {% endblock %}
 {% block body %}
-<div class="field">
+<div class="field_center">
 	{% for picture in picture_list %}
 	<img src="{{picture.url}}" id="{{picture.id}}" alt="image not found" style="display:none;">
 	{% endfor %}

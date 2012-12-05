@@ -2,13 +2,23 @@
 {% block content %}
 <div class="field">
 	<h1>{{album.name}}</h1>
-	{% for picture in picture_list %}
-	<a href="/view_photo/{{album.id}}/{{picture.id}}/"><img src="{{picture.image.url}}" alt="image not found" width="120" height="120"></a>
-	{% endfor %}
+	<br>
+	<div>
+		{% for picture in picture_list %}
+		<a href="/view_photo/{{album.id}}/{{picture.id}}/"><img src="{{picture.image.url}}" alt="image not found" width="120" height="120"></a>
+		{% endfor %}
+	</div>
 </div>
 <div class="linkbar">
 	{% for album in album_list %}
 	<a href="{{album_prefix}}{{album.id}}/">{{album.name}}</a>
+	{% endfor %}
+</div>
+<div class="fade" id="picture_viewer">
+</div>
+<div class="top">
+	{% for picture in picture_list %}
+	<a href="/view_photo/{{album.id}}/{{picture.id}}/"><img src="{{picture.image.url}}" alt="image not found" width="120" height="120"></a>
 	{% endfor %}
 </div>
 {% endblock %}
