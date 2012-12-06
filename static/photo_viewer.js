@@ -11,7 +11,7 @@ ElementList.prototype.getList = function() {
 }
 
 function Button(element) {
-	this.id = "#" + element;
+	this.id = element;
 	this.enabled = true;
 	this.action = function() {};
 }
@@ -24,8 +24,8 @@ Button.prototype.enable = function() {
 }
 
 Button.prototype.disable = function() {
-	if(this.enable) {
-		this.enable = false;
+	if(this.enabled) {
+		this.enabled = false;
 		$(this.id).hide();
 	}
 }
@@ -59,7 +59,7 @@ PhotoController.prototype.next = function() {
 	$(this.selected).hide();
 	this.selected = this.listOfPhotos[this.listOfPhotos.indexOf(this.selected) + 1];
 	$(this.selected).show();
-	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length) {
+	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length - 1) {
 		this.nextButton.disable();
 	}
 	this.previousButton.enable();
@@ -74,12 +74,12 @@ PhotoController.prototype.splashOn = function(selected) {
 	if(this.listOfPhotos.indexOf(this.selected) == 0) {
 		this.previousButton.disable();
 	}
-	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length) {
+	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length - 1) {
 		this.nextButton.disable();
 	}
 }
 
-PhotoContoller.prototype.splashOff = function() {
+PhotoController.prototype.splashOff = function() {
 	$(this.selected).hide();
 	$(this.splash).hide();
 }

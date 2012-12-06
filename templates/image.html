@@ -1,11 +1,42 @@
 {% extends "main.html" %}
+{% load static %}
+{% block header_extra %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="{% get_static_prefix %}photo_viewer.js"></script>
+<script>
+	var photoList = new ElementList();
+	{% for picture in picture_list %}photoList.addId("{{picture.getIdentifier}}");
+	{% endfor %}
+	var previousButton = new Button("#previous");
+	var nextButton = new Button("#next");
+	var splash = "#splash";
+	var controller = new PhotoController(photoList.getList(), previousButton, nextButton, splash);
+	$(document).ready(function() {
+		$(previousButton.id).click(function() {
+			event.stopPropagation();
+			previousButton.action();
+		});
+		$(nextButton.id).click(function() {
+			event.stopPropagation();
+			nextButton.action();
+		});
+		$(splash).click(function() {
+			controller.splashOff();
+		});
+		{% for picture in picture_list %}$("#{{picture.getIdentifier}}_tab").click(function() {
+			controller.splashOn("#{{picture.getIdentifier}}");
+		});
+		{% endfor %}
+	});
+</script>
+{% endblock %}
 {% block content %}
 <div class="field">
 	<h1>{{album.name}}</h1>
 	<br>
 	<div>
 		{% for picture in picture_list %}
-		<a href="/view_photo/{{album.id}}/{{picture.id}}/"><img src="{{picture.image.url}}" alt="image not found" width="120" height="120"></a>
+		<img src="{{picture.image.url}}" alt="image not found" width="120" height="120" id="{{picture.getIdentifier}}_tab">
 		{% endfor %}
 	</div>
 </div>
@@ -14,11 +45,13 @@
 	<a href="{{album_prefix}}{{album.id}}/">{{album.name}}</a>
 	{% endfor %}
 </div>
-<div class="fade" id="picture_viewer">
+<div class="fade" id="splash" style="display:none;">
+	<button type="button" style="margin-left:25% margin-right:50%;" id="previous">previous</button>
+	<button type="button" id="next">next</button>
 </div>
 <div class="top">
 	{% for picture in picture_list %}
-	<a href="/view_photo/{{album.id}}/{{picture.id}}/"><img src="{{picture.image.url}}" alt="image not found" width="120" height="120"></a>
+	<img src="{{picture.image.url}}" alt="image not found" class="top" id="{{picture.getIdentifier}}" style="display:none;">
 	{% endfor %}
 </div>
 {% endblock %}

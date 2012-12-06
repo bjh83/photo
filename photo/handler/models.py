@@ -1,4 +1,5 @@
 from django.db import models
+from string import replace
 
 class Album(models.Model):
 	name = models.CharField(max_length=100)
@@ -13,4 +14,7 @@ class Picture(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
+	def getIdentifier(self):
+		return replace(self.__unicode__(), ' ', '') + str(self.id)
 
