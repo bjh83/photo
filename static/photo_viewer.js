@@ -1,8 +1,19 @@
-function Button(id) {
-	this.id = id;
-	this.action = function(){};
+function ElementList() {
+	this.list = new Array();
+}
+
+ElementList.prototype.addId = function(element) {
+	this.list.push("#" + element);
+}
+
+ElementList.prototype.getList = function() {
+	return this.list;
+}
+
+function Button(element) {
+	this.id = "#" + element;
 	this.enabled = true;
-	//$(this.id).hide();
+	this.action = function() {};
 }
 
 Button.prototype.enable = function() {
@@ -13,41 +24,25 @@ Button.prototype.enable = function() {
 }
 
 Button.prototype.disable = function() {
-	if(this.enabled) {
-		this.enabled = false;
+	if(this.enable) {
+		this.enable = false;
 		$(this.id).hide();
 	}
 }
 
-function PhotoController(listOfPhotos, selected, leftButton, rightButton) {
+function PhotoController(listOfPhotos, previousButton, nextButton, splash) {
+	this.selected = listOfPhotos[0];
 	this.listOfPhotos = listOfPhotos;
-	this.selected = selected;
-	this.leftButton = leftButton;
-	this.rightButton = rightButton;
-	$(this.selected).show();
-	if(this.listOfPhotos.indexOf(this.selected) == 0) {
-		this.leftButton.disable();
-	}
-	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length - 1) {
-		this.rightButton.disable();
-	}
+	this.previousButton = previousButton;
+	this.nextButton = nextButton;
+	this.splash = splash;
 	var instance = this;
-	this.leftButton.action = function() {
+	this.previousButton.action = function() {
 		instance.previous();
-	};
-	this.rightButton.action = function() {
-		instance.next();
-	};
-}
-
-PhotoController.prototype.next = function() {
-	$(this.selected).hide();
-	this.selected = this.listOfPhotos[this.listOfPhotos.indexOf(this.selected) + 1];
-	$(this.selected).show();
-	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length - 1) {
-		this.rightButton.disable();
 	}
-	this.leftButton.enable();
+	this.nextButton.action = function() {
+		instance.next();
+	}
 }
 
 PhotoController.prototype.previous = function() {
@@ -55,8 +50,37 @@ PhotoController.prototype.previous = function() {
 	this.selected = this.listOfPhotos[this.listOfPhotos.indexOf(this.selected) - 1];
 	$(this.selected).show();
 	if(this.listOfPhotos.indexOf(this.selected) == 0) {
-		this.leftButton.disable();
+		this.previousButton.disable();
 	}
-	this.rightButton.enable();
+	this.nextButton.enable();
+}
+
+PhotoController.prototype.next = function() {
+	$(this.selected).hide();
+	this.selected = this.listOfPhotos[this.listOfPhotos.indexOf(this.selected) + 1];
+	$(this.selected).show();
+	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length) {
+		this.nextButton.disable();
+	}
+	this.previousButton.enable();
+}
+
+PhotoController.prototype.splashOn = function(selected) {
+	this.selected = selected;
+	$(this.splash).show();
+	$(this.selected).show();
+	this.previousButton.enable();
+	this.nextButton.enable();
+	if(this.listOfPhotos.indexOf(this.selected) == 0) {
+		this.previousButton.disable();
+	}
+	if(this.listOfPhotos.indexOf(this.selected) == this.listOfPhotos.length) {
+		this.nextButton.disable();
+	}
+}
+
+PhotoContoller.prototype.splashOff = function() {
+	$(this.selected).hide();
+	$(this.splash).hide();
 }
 
