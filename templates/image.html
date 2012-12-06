@@ -46,8 +46,8 @@
 	{% endfor %}
 </div>
 <div class="fade" id="splash" style="display:none;">
-	<button type="button" style="position:absolute; margin-left:25%; z-index:3;" id="previous">previous</button>
-	<button type="button" style="position:absolute; margin-left:75%; z-index:3;" id="next">next</button>
+	<button type="button" style="position:fixed; left:0%; top:50%;" id="previous">previous</button>
+	<button type="button" style="position:fixed; right:0%; top:50%;" id="next">next</button>
 </div>
 <div class="top">
 	{% for picture in picture_list %}

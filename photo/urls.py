@@ -14,7 +14,6 @@ urlpatterns = patterns('',
 	url(r'^bio/$', 'handler.views.bio'),
 	url(r'^photos/$', 'handler.views.photos'),
 	url(r'^photos/(?P<album_id>\d+)/$', 'handler.views.photos'),
-	url(r'^view_photo/(?P<album_id>\d+)/(?P<photo_id>\d+)/$', 'handler.views.view_photo'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
