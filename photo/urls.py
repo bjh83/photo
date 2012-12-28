@@ -9,11 +9,11 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'photo.views.home', name='home'),
     # url(r'^photo/', include('photo.foo.urls')),
-	url(r'^home/$', 'handler.views.index'),
-	url(r'^$', 'handler.views.index'),
-	url(r'^bio/$', 'handler.views.bio'),
-	url(r'^photos/$', 'handler.views.photos'),
-	url(r'^photos/(?P<album_id>\d+)/$', 'handler.views.photos'),
+	url(r'^home/$', 'photo.handler.views.index'),
+	url(r'^$', 'photo.handler.views.index'),
+	url(r'^bio/$', 'photo.handler.views.bio'),
+	url(r'^photos/$', 'photo.handler.views.photos'),
+	url(r'^photos/(?P<album_id>\d+)/$', 'photo.handler.views.photos'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

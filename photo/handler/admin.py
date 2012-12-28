@@ -1,4 +1,4 @@
-from handler.models import Album, Picture
+from photo.handler.models import Album, Picture
 from django.contrib import admin
 
 class PictureInline(admin.TabularInline):

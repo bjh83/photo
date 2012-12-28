@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, Http404
-from handler.models import Album
+from photo.handler.models import Album
 
 links = [
 		{'name': 'Home', 'url': '/home/'},
